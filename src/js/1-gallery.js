@@ -70,12 +70,12 @@ const images = [
 const imgContainer = document.querySelector('.gallery');
 imgContainer.innerHTML = images.map(imgTemplate).join('');
 
+
 function imgTemplate (obj) {
-    return ` <li class="gallery-item">
+  return ` <li class="gallery-item">
   <a class="gallery-link" href="${obj.original}">
-    <img class="gallery-image" src="${obj.preview}" alt="${obj.description} " />
-  </a>
-</li>` 
+  <img class="gallery-image" src="${obj.preview}" alt="${obj.description}"/>
+  </a></li>` 
 }
 
 let gallery = new SimpleLightbox('.gallery a', { captionDelay: 250, captionsData:'alt', showCounter: false});

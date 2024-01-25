@@ -43,12 +43,22 @@ function loadFromLS (key = 'empty') {
     }
 }
 
-// Під час сабміту форми очищаєм сховище і поля форми,
-// і виводим у консоль об'єкт з полями email, message та їхніми поточними значеннями.
+
+// Сабміт форми
 function onBtnSubmit(e) {
-   e.preventDefault();
-    const data = loadFromLS(storageKey) || {};
-    console.log(data);
-    form.reset();
-    localStorage.removeItem(storageKey);
+     e.preventDefault();
+    // Перевірка, що всі поля заповнені
+    const userMail = form.elements.email.value;
+    const userMessage = form.elements.message.value;
+    if (userMail === '' || userMessage === '') {
+        alert ('Будь ласка, заповніть всі поля форми')
+        return;
+    } else {
+        // очищуємо сховище і поля форми; виводим у консоль об'єкт з полями email, message та їхніми поточними значеннями.
+        const data = loadFromLS(storageKey) || {};
+        console.log(data);
+        form.reset();
+        localStorage.removeItem(storageKey);
+
+    }
 }
